@@ -1,0 +1,26 @@
+
+
+Create App > apiname.php
+
+<?php
+namespace App;
+use Illuminate\Database\Eloquent\Model;
+
+class Shop extends Model
+{
+    protected $fillable=['firstname','lastname','city'];
+    
+    protected $table='soptable';
+    protected $primarykey='id';
+    
+    const CREATED_AT= 'creation_date';
+    const UPDATED_AT='updated_date';
+}
+
+Create Table <soptable> names
+
+
+
+
+
+
