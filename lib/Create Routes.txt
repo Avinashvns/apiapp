@@ -1,0 +1,52 @@
+<?php
+
+use Illuminate\Http\Request;
+
+use App\Shop;
+
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+
+//soptable create in table
+Route::get('/ram', function(Request $request){
+	try{ 
+	   // print($request->all()[0]);
+	$pi =Shop::create($request->all());
+		$pi->save();
+	$output=[];
+	$output["ShopDetails"]=$pi;
+		$output["status"]="ok";
+		
+		return response()->json($output, 200);
+	}
+	catch(\Exception $f){
+		$error=array("status"=>"failed","error"=>$f->getMessage());
+		return response()->json($error, 200);
+	}
+});
+
+// Shop details print
+Route::get('/printshop', function(Request $request){
+	try{ 
+	   // print($request->all()[0]);
+	$pi = Shop::all();
+	$output=[];
+	$output["ShopDetails"]=$pi;
+		$output["status"]="ok";
+		
+		return response()->json($output, 200);
+	}
+	catch(\Exception $f){
+		$error=array("status"=>"failed","error"=>$f->getMessage());
+		return response()->json($error, 200);
+	}
+});
+
+
+
+
+
+
