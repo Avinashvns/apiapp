@@ -1,4 +1,5 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main()async {
@@ -24,6 +25,15 @@ class MylessApp extends StatelessWidget{
    return Scaffold(
      appBar: AppBar(
        title: Text("Api App"),
+       flexibleSpace: Container(
+         decoration: BoxDecoration(
+           gradient: LinearGradient(
+             colors: [Colors.pink,Colors.green],
+             begin: Alignment.bottomRight,
+             end: Alignment.topLeft,
+           ),
+         ),
+       ),
      ),
    );
   }
