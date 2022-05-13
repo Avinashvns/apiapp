@@ -1,11 +1,13 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main()async {
   {
     try{
-
+      WidgetsFlutterBinding.ensureInitialized();
+      await Firebase.initializeApp();
     }
     catch(e){
 
@@ -16,6 +18,7 @@ void main()async {
     initialRoute: '/',
     routes: {
       '/':(context)=> MylessApp(),
+      '/second':(context)=>,
     },
   ));
 }
@@ -33,6 +36,18 @@ class MylessApp extends StatelessWidget{
              end: Alignment.topLeft,
            ),
          ),
+       ),
+     ),
+     body: SafeArea(
+       child: Column(
+         children: [
+           ElevatedButton(
+             child: Text("Continue"),
+             onPressed: (){
+               Navigator.pushNamed(context, '/second');
+             },
+           )
+         ],
        ),
      ),
    );
